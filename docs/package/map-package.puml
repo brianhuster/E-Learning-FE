@@ -1,0 +1,86 @@
+@startuml
+package "Front-end" as FE{
+    package Component {
+        package App {
+            class "Icon" as AIC {}
+            class "Image" as AI {}
+            AIC -r-o AI
+        }
+        package  "CourseMap" as CM{
+            class "Chapter" as CMC {}
+        }
+    }
+    package Page {
+        Class MapPage {}
+    }
+    package Layout {
+        Class Logined{
+        }
+    }
+    CMC -l-o AIC
+    MapPage -u-o AI
+    MapPage -u-o CMC
+    package Store{
+        package Course {
+            class "Store" as CS {
+            }
+        }
+
+        package Notification {
+            class "Store" as NS {
+            }
+        }
+        package Map {
+            class "Store" as MS {
+            }
+        }
+        package Quiz {
+            class "Store" as QS {
+            }
+        }
+
+    }
+    MapPage -u-|> Logined
+    MapPage -r-> CS
+    MapPage -r-> NS
+    MapPage --> MS
+    MapPage -l-> QS
+    CS -d[hidden]-> MS
+    MS -d[hidden]-> NS
+    NS -d[hidden]-> QS
+}
+package "Back-end" as BE{
+    package QuizSheet{
+        Class QuizSheetController {
+        }
+    }
+    package Notification{
+        Class NotificationController {
+        }
+    }
+    package StudyPath{
+        Class StudyPathController {
+        }
+    }
+    package Mission{
+        Class MissionController {
+        }
+    }
+    package Course{
+        Class CourseController {
+        }
+    }
+    CourseController -d[hidden]-> StudyPathController
+    StudyPathController -d[hidden]-> MissionController
+    MissionController -d[hidden]-> NotificationController
+    NotificationController -d[hidden]-> QuizSheetController
+}
+
+QS .l.> QuizSheetController: http
+QS .l.> NotificationController: http
+MS .l.> StudyPathController: http
+MS .l.> MissionController: http
+CS .l.> CourseController: http
+CS .l.> StudyPathController:    http
+NS .l.> NotificationController: http
+@enduml

@@ -1,0 +1,70 @@
+@startuml
+package "Front-end" as FE{
+    package Component {
+        package App {
+            class "Image" as AI {}
+            class "LoginForm" as ALF {}
+            AI -d[hidden]-> ALF
+        }
+    }
+    package Page {
+        Class LoginPage {}
+    }
+    package Layout {
+        Class UnLogined{
+        }
+    }
+    LoginPage -o AI
+    LoginPage -o ALF
+    package Store{
+        package User {
+            package dto {
+                interface "Login\n Request" as LR <<dto>>{
+                }
+                interface "Login\n Response" as LRes <<dto>>{
+                }
+                LR -r[hidden]-> LRes
+                interface "SignUp\n Request" as SUR <<dto>>{
+                }
+                interface "SignUp\n Response" as SRes <<dto>>{
+                }
+                SUR .d[hidden].> LR
+                SUR -r[hidden]-> SRes
+                interface "FetchInfo\n Request" as FIR <<dto>>{
+                }
+                interface "FetchInfo\n Response" as FIRes <<dto>>{
+                }
+                FIR .d[hidden].> SUR
+                FIR -r[hidden]-> FIRes
+            }
+            package entity {
+                interface "SearchUser\n Entity" as SUE{
+                }
+                interface "UserState\n Enity" as USE{
+                }
+                USE -l-|> SUE
+            }
+            class "Store" as US {
+            }
+            US ..> dto
+            US .r..|> USE
+        }
+    }
+    LoginPage -|> UnLogined
+}
+package "Back-end" as BE{
+    package Auth{
+        Class AuthController {
+        }
+    }
+    package User{
+        Class UserController {
+        }
+    }
+    Auth .d[hidden].> User
+}
+US .l.> UserController: http
+US .l.> AuthController: http
+LoginPage --> US
+
+@enduml

@@ -1,0 +1,45 @@
+@startuml
+package "Front-end" as FE{
+    package Composable {
+        Class Modal {}
+        Class Loading {}
+        Modal -u[hidden]-|> Loading
+    }
+    package Page {
+        Class BuildMapPage {}
+    }
+    package Layout {
+        Class CourseInfo{
+        }
+    }
+    package Store{
+        package Course {
+            package dto {
+                interface "SubmitTarget\n Request" as STReq <<dto>>{
+                }
+                interface "SubmitTarget\n Response" as STRes <<dto>>{
+                }
+                STRes .u[hidden].> STReq
+
+            }
+            class "Store" as CS {
+            }
+            CS .r.> STReq
+            CS .r.> STRes
+
+        }
+    }
+    BuildMapPage -u-|> CourseInfo
+    BuildMapPage -l-o Composable.Modal
+    BuildMapPage -l-o Composable.Loading
+}
+package "Back-end" as BE{
+    package StudyPath{
+        Class StudyPathController {
+        }
+    }
+}
+CS .l.> StudyPathController:http
+BuildMapPage --> CS
+
+@enduml

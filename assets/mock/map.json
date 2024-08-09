@@ -1,0 +1,76 @@
+{
+  "remainDays": 10,
+  "calendar": {
+    "2024-04-26": {
+      "complete": false,
+      "message": "Hoàn thành mức 1 dạng 1 chương 1"
+    },
+    "2024-04-20": {
+      "complete": false,
+      "message": "Hoàn thành mức 1 dạng 1 chương 1"
+    },
+    "2024-04-18": {
+      "complete": false,
+      "message": "Hoàn thành mức 1 dạng 1 chương 1"
+    },
+    "2024-04-23": {
+      "complete": false,
+      "message": "Hoàn thành mức 1 dạng 1 chương 1"
+    },
+    "2024-04-21": {
+      "complete": false,
+      "message": "Hoàn thành mức 1 dạng 1 chương 1"
+    }
+  },
+  "chapters": [
+    {
+      "chapterName": "Sự kiện ngẫu nhiên và phép tính xác suất",
+      "chapterNumber": 1,
+      "figures": [
+        {
+          "figureName": "Bài toán đếm",
+          "figureNumber": 1,
+          "_id": "661ab9d6b63bd525425ba91d"
+        },
+        {
+          "figureName": "Công thức xác suất cổ điển",
+          "figureNumber": 2,
+          "_id": "661ab9d6b63bd525425ba91e"
+        },
+        {
+          "figureName": "Công thức xác suất có điều kiện",
+          "figureNumber": 3,
+          "_id": "661ab9d6b63bd525425ba91f"
+        },
+        {
+          "figureName": "Công thức xác suất đầy đủ",
+          "figureNumber": 4,
+          "_id": "661ab9d6b63bd525425ba920"
+        },
+        {
+          "figureName": "Công thức Béc-nu-li",
+          "figureNumber": 5,
+          "_id": "661ab9d6b63bd525425ba921"
+        },
+        {
+          "figureName": "Công thức Bey-ét",
+          "figureNumber": 6,
+          "_id": "661ab9d6b63bd525425ba922"
+        }
+      ],
+      "_id": "661ab9d6b63bd525425ba91c"
+    },
+    {
+      "chapterName": "Biến ngẫu nhiên và quy luật phân phối xác suất",
+      "chapterNumber": 2,
+      "figures": [
+        {
+          "figureName": "Hàm phân phối xác suất",
+          "figureNumber": 1,
+          "_id": "661ab9d6b63bd525425ba924"
+        }
+      ],
+      "_id": "661ab9d6b63bd525425ba923"
+    }
+  ]
+}

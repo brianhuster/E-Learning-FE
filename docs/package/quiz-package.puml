@@ -1,0 +1,76 @@
+@startuml
+package "Front-end" as FE{
+    package Component {
+        package App {
+            class "Image" as AI {}
+            class "Question" as AQ {}
+            AQ -r-o AI
+        }
+        package  "DuringQuiz" as DQ{
+            class "WorkingArea" as DQW {}
+            class "Information" as DQI {}
+            DQW -u[hidden]-o DQI
+        }
+        DQI -u-o AQ
+    }
+    package Page {
+        Class QuizPage {}
+    }
+    package Layout {
+        Class Logined{
+        }
+    }
+    package Composable {
+        class "Loading" as CL {}
+        class "Modal" as CM {
+        }
+        CL -u-o CM
+    }
+    DQI .l.> CL
+    DQW .l.> CM
+    DQW .l.> CL
+
+    QuizPage -u-o DQI
+    QuizPage -u-o DQW
+    package Store{
+        package Course {
+            class "Store" as CS {
+            }
+        }  
+         package User {
+            class "Store" as US {
+            }
+        }
+         package Quiz {
+            class "Store" as QS {
+            }
+        }                               
+    }
+    QuizPage ..|> Logined
+    DQW -u-> CS
+    DQW --> US
+    QuizPage --> QS
+    CS -d[hidden]-> US
+    US -d[hidden]-> QS
+}
+package "Back-end" as BE{
+    package QuizSheet{
+        Class QuizSheetController {
+        }
+    }
+    package User{
+        Class UserController {
+        }
+    }
+    package Course{
+        Class CourseController {
+        }
+    }
+    CourseController -d[hidden]-> UserController
+    UserController -d[hidden]-> QuizSheetController
+}
+
+QS .l..> QuizSheetController: http
+US .l..> UserController:     http
+CS .l..> CourseController: http
+@enduml

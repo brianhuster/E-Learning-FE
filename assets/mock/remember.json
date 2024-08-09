@@ -1,0 +1,13 @@
+[
+  {
+    "chapterNumber": 1,
+    "figureName": 1,
+    "title": "The First Figure",
+    "content": [
+      {
+        "text": "This is the first figure of the first chapter.",
+        "img": "img/1-1.png"
+      }
+    ]
+  }
+]
